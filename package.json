@@ -1,0 +1,39 @@
+{
+  "name": "chrome-extension-ts-react",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --config webpack.dev.js",
+    "prod": "webpack --config webpack.prod.js",
+    "build": "npm run prod && zip -r build.crx build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.4.1",
+    "css-loader": "^3.4.2",
+    "file-loader": "^5.0.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.2",
+    "style-loader": "^1.1.2",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.4",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-extension-reloader": "^1.1.4",
+    "webpack-merge": "^4.2.2"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.91",
+    "@types/node": "^13.1.6",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/semantic-ui": "^2.2.7",
+    "@types/webpack": "^4.41.2"
+  }
+}
