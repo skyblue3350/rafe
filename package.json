@@ -14,26 +14,26 @@
   "dependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.4.1",
-    "css-loader": "^3.4.2",
-    "file-loader": "^5.0.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "css-loader": "^3.6.0",
+    "file-loader": "^5.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.2",
-    "style-loader": "^1.1.2",
-    "ts-loader": "^6.2.1",
-    "typescript": "^3.7.4",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
+    "semantic-ui-react": "^2.1.1",
+    "style-loader": "^1.3.0",
+    "ts-loader": "^6.2.2",
+    "typescript": "^4.5.5",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12",
     "webpack-extension-reloader": "^1.1.4",
     "webpack-merge": "^4.2.2"
   },
   "devDependencies": {
-    "@types/chrome": "0.0.91",
-    "@types/node": "^13.1.6",
-    "@types/react": "^16.9.17",
-    "@types/react-dom": "^16.9.4",
+    "@types/chrome": "0.0.177",
+    "@types/node": "^17.0.14",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
     "@types/semantic-ui": "^2.2.7",
-    "@types/webpack": "^4.41.2"
+    "@types/webpack": "^4.41.32"
   }
 }
