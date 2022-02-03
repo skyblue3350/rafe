@@ -3,30 +3,17 @@
     "short_name": "{{ NAME }}",
     "description": "{{ DESCRIPTION }}",
     "version": "{{ VERSION }}",
-    "manifest_version": 2,
+    "manifest_version": 3,
     "content_scripts": [
-        {
-            "matches": ["*://example.com/*"],
-            "js": ["js/example.js"]
-        }
     ],
-    "background": {
-        "scripts": ["js/background.js"]
-    },
-    "browser_action": {
+    "action": {
         "default_title": "",
         "default_popup": "popup.html"
     },
     "options_page": "option.html",
-    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-    "web_accessible_resources": [
-        "*.png",
-        "*.eot",
-        "*.woff",
-        "*.woff2",
-        "*.ttf",
-        "*.svg"
-    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
+    },
     "permissions": [
         "storage"
     ],

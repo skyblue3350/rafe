@@ -5,6 +5,7 @@ const packageJson = require('./package.json')
 const entries = require('./webpack.entries').entries
 
 module.exports = {
+    devtool: "source-map",
     entry: entries,
     output: {
         path: path.join(__dirname, 'build/js'),
@@ -26,10 +27,7 @@ module.exports = {
             },
             {
                 test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: 'file-loader',
-                options: {
-                    publicPath: 'js/'
-                }
+                type: 'asset/resource',
             },
             {
                 test: /\.(png|jpg|gif)$/,
@@ -71,5 +69,8 @@ module.exports = {
     ],
     performance: {
         hints: false
+    },
+    optimization: {
+        runtimeChunk: false
     }
 }
