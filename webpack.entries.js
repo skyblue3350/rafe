@@ -1,7 +1,6 @@
 const path = require('path')
 
 const contentScripts = {
-    example: path.join(__dirname, 'src/content/example/index.ts'),
 }
 const backgroundScript = path.join(__dirname, 'src/background/index.ts')
 const popupScript = path.join(__dirname, 'src/popup/index.tsx')

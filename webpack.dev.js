@@ -7,13 +7,13 @@ module.exports = merge(common, {
     mode: 'development',
     watch: true,
     plugins: [
-        new ExtensionReloader({
-            entries: {
-                background: 'background',
-                options: 'option',
-                popup: 'popup',
-                contentScript: Object.keys(entries.contentScripts),
-            },
-        }),
+        // new ExtensionReloader({
+        //     entries: {
+        //         background: 'background',
+        //         options: 'option',
+        //         popup: 'popup',
+        //         contentScript: Object.keys(entries.contentScripts),
+        //     },
+        // }),
     ]
 });
