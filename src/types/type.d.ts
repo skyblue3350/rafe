@@ -8,6 +8,6 @@ interface Profile {
 interface Stream {
     name: string
     query: string
-    color: string
+    color: import('semantic-ui-react').SemanticCOLORS
     notification: boolean
 }
