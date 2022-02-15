@@ -3,6 +3,7 @@ import { Input, Button, Card, Menu, Label, Header, Container, Icon, Modal, Check
 import { ProfileModal } from '../components/modal/profile'
 import { SteamModal } from '../components/modal/stream'
 import styled from 'styled-components'
+import { useMount, useUpdateEffect } from 'ahooks'
 
 interface Props { }
 
@@ -46,6 +47,20 @@ export const App: React.FC<Props> = (props: Props) => {
     const [streams, setStreams] = React.useState<Stream[]>([])
     const [streamModal, setStreamModal] = React.useState(false)
 
+    useMount(() => {
+        chrome.storage.local.get(['profiles', 'streams']).then(({profiles=[], streams=[]}) => {
+            setProfiles(profiles)
+            setStreams(streams)
+        })
+    })
+
+    useUpdateEffect(() => {
+        chrome.storage.local.set({
+            profiles,
+            streams,
+        })
+    }, [profiles, streams])
+
     return (
         <Main>
             <ProfileModal
@@ -58,7 +73,7 @@ export const App: React.FC<Props> = (props: Props) => {
                 }} />
             <SteamModal
                 profiles={profiles}
-                open={profiles.length !== 0 || streamModal}
+                open={streamModal}
                 onClose={() => setStreamModal(false)}
                 onSubmit={(stream) => {
                     setStreams([...streams, stream])
@@ -84,11 +99,12 @@ export const App: React.FC<Props> = (props: Props) => {
                         <Menu.Item>
                             <Menu.Header>Stream</Menu.Header>
                             <Menu.Menu>
-                                {['Review', 'Stream1', 'Stream2', 'a', 'b', 'c', 'd', 'a', 'b', 'c', 'd', 'a', 'b', 'c', 'hoge', 'fuga'].map((item, index) => {
+                                {streams.map((stream, index) => {
                                     return (
-                                        <Menu.Item active={activeItem === item} name={item} onClick={(e, { name }) => setActiveItem(name)} key={index}>
+                                        <Menu.Item active={activeItem === stream.name} name={stream.name} onClick={(e, { name }) => setActiveItem(name)} key={index}>
                                             <Label color='teal'>{index}</Label>
-                                            <Icon name='github' />{item}
+                                            <Icon name='github' color={stream.color} />
+                                            {stream.name}
                                         </Menu.Item>
                                     )
                                 })}
