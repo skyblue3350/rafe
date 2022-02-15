@@ -48,6 +48,7 @@ export const ProfileModal: React.FC<Props> = (props: Props) => {
         } else if (existToken()) {
             setError('this token is already in use')
             setDisabled(false)
+            return
         }
 
         const client = new Octokit({
