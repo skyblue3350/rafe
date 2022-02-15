@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@octokit/rest": "^18.12.0",
+    "ahooks": "^3.1.9",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.6.0",
