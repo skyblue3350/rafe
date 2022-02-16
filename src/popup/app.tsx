@@ -4,6 +4,9 @@ import { ProfileModal } from '../components/modal/profile'
 import { SteamModal } from '../components/modal/stream'
 import styled from 'styled-components'
 import { useMount, useUpdateEffect } from 'ahooks'
+import { useLiveQuery } from 'dexie-react-hooks'
+import Dexie from 'dexie'
+import { db } from '../db'
 
 const Main = styled.div`
 width: 600px;
@@ -61,6 +64,29 @@ export const App: React.FC<Props> = (props: Props) => {
         })
     }, [profiles, streams])
 
+    useUpdateEffect(() => {
+        db.streams.add({
+            stream: activeItem,
+            title: new Date().toLocaleString(),
+            labels: [{
+                id: '',
+                node_id: '',
+                name: 'good first issue',
+                color: 'red',
+                default: true,
+                description: '',
+            }],
+            state: ['open', 'close'][Math.floor(Math.random()*2)],
+            html_url: '',
+            assignee: null,
+            assignees: [],
+            created_at: '',
+            updated_at: '',
+        })
+    }, [activeItem])
+
+    const items = useLiveQuery(() => db.streams.where('stream').equals(activeItem).toArray(), [activeItem])
+
     return (
         <Main>
             <ProfileModal
@@ -113,17 +139,16 @@ export const App: React.FC<Props> = (props: Props) => {
                     </Menu>
                 </StreamList>
                 <StreamViewer>
-                    {Array.from(new Array(60)).map((v, i) => i + 1).map((item, index) => {
+                    {items?.map((item, index) => {
                         return <Card meta='today' fluid key={index} style={{ margin: 0 }}>
                             <Card.Content>
-                                <Card.Header><Icon name='code branch' color='green' />hoge</Card.Header>
+                                <Card.Header><Icon name='code branch' color={item.state === 'open' ? 'green' : 'red'} />{item.title}</Card.Header>
                                 <Card.Meta>
-                                    <Label tag size='mini' color='red'>bug</Label>
-                                    <Label tag size='mini' color='purple'>good first issue</Label>
-                                    <Label tag size='mini' color='red'>bug</Label>
-                                    <Label tag size='mini' color='purple'>good first issue</Label>
-                                    <Label tag size='mini' color='red'>bug</Label>
-                                    <Label tag size='mini' color='purple'>good first issue</Label>
+                                    {item.labels.map(label => {
+                                        return (
+                                            <Label tag size='mini' color='red' key={label.id}>{label.name}</Label>
+                                        )
+                                    })}
                                 </Card.Meta>
                                 <Card.Description>
 
