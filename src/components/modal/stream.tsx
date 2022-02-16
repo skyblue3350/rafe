@@ -87,7 +87,7 @@ export const SteamModal: React.FC<Props> = (props: Props) => {
                             <Form.Select
                                 value={color}
                                 onChange={(e, {value}) => setColor(value as SemanticCOLORS)}
-                                options={['red'].map(color => ({
+                                options={colors.map(color => ({
                                     key: color,
                                     text: color,
                                     value: color,
