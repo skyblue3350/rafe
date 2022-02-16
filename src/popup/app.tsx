@@ -5,42 +5,42 @@ import { SteamModal } from '../components/modal/stream'
 import styled from 'styled-components'
 import { useMount, useUpdateEffect } from 'ahooks'
 
+const Main = styled.div`
+width: 600px;
+height: 500px;
+`
+const ToolBox = styled.div`
+height: 50px;
+display: flex;
+align-items: center;
+flex-direction: row;
+`
+const SearchBox = styled.div`
+flex: 1;
+padding: 10px;
+`
+const OptionsBox = styled.div`
+width: 150px;
+justify-content: center;
+display: flex;
+`
+const StreamBox = styled.div`
+width: 600px;
+height: 450px;
+display: flex;
+`
+const StreamList = styled.div`
+width: 250px;
+overflow: hidden auto;
+`
+const StreamViewer = styled.div`
+width: 450px;
+overflow: hidden auto;
+`
+
 interface Props { }
 
 export const App: React.FC<Props> = (props: Props) => {
-    const Main = styled.div`
-        width: 600px;
-        height: 500px;
-    `
-    const ToolBox = styled.div`
-        height: 50px;
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-    `
-    const SearchBox = styled.div`
-        flex: 1;
-        padding: 10px;
-    `
-    const OptionsBox = styled.div`
-        width: 150px;
-        justify-content: center;
-        display: flex;
-    `
-    const StreamBox = styled.div`
-        width: 600px;
-        height: 450px;
-        display: flex;
-    `
-    const StreamList = styled.div`
-        width: 250px;
-        overflow: hidden auto;
-    `
-    const StreamViewer = styled.div`
-        width: 450px;
-        overflow: hidden auto;
-    `
-
     const [activeItem, setActiveItem] = React.useState('')
     const [profiles, setProfiles] = React.useState<Profile[]>([])
     const [profileModal, setProfileModal] = React.useState(false)
